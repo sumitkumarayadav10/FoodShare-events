@@ -1,0 +1,17 @@
+.hero-section {
+    background: linear-gradient(135deg, #198754 0%, #0a3622 100%);
+}
+.food-card, .hover-lift {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.food-card:hover, .hover-lift:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.12) !important;
+}
+@media print {
+    body * { visibility: hidden; }
+    #certificateContent, #certificateContent * { visibility: visible; }
+    #certificateContent { position: absolute; left: 0; top: 0; width: 100%; }
+    #sampleCertBody, #sampleCertBody * { visibility: visible; }
+    #sampleCertBody { position: absolute; left: 0; top: 0; width: 100%; }
+}

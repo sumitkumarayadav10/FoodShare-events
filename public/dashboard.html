@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | FoodShare Events</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-light">
+
+<nav class="navbar navbar-dark bg-dark shadow-sm">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="index.html">🍲 FoodShare Events</a>
+        <div class="d-flex align-items-center gap-3 text-white">
+            <a href="index.html" class="btn btn-outline-light btn-sm">🏠 Home</a>
+            <span id="userBadge" class="badge bg-warning text-dark fs-6"></span>
+            <button onclick="logout()" class="btn btn-danger btn-sm">Logout</button>
+        </div>
+    </div>
+</nav>
+
+<div class="container py-4">
+    <!-- DONOR SECTION: Post Surplus Food -->
+    <div id="donorPanel" class="card border-0 shadow-sm rounded-4 p-4 mb-4 d-none">
+        <h4 class="fw-bold text-success mb-3">🍱 Post Surplus Food from Event / Restaurant</h4>
+        <form id="donateForm" class="row g-3">
+            <div class="col-md-4">
+                <label class="form-label">Event / Source Type</label>
+                <select id="eventType" class="form-select">
+                    <option>Wedding Reception 💍</option>
+                    <option>Birthday / Private Party 🎉</option>
+                    <option>Restaurant / Hotel Surplus 🏨</option>
+                    <option>Corporate Function 🏢</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">Food Items Description</label>
+                <input type="text" id="foodItems" class="form-control" placeholder="e.g., Veg Biryani, Paneer, Rotis" required>
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">Quantity (No. of People Fed)</label>
+                <input type="number" id="quantity" class="form-control" placeholder="e.g., 50" required>
+            </div>
+            <div class="col-md-5">
+                <label class="form-label">Pickup Address / Venue</label>
+                <input type="text" id="location" class="form-control" placeholder="e.g., Mira Road Banquet Hall, Mumbai" required>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Safe to Eat For (Hours)</label>
+                <input type="number" id="hoursValid" class="form-control" value="4" min="1" max="12" required>
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">Food Image URL (Optional)</label>
+                <input type="url" id="imageUrl" class="form-control" placeholder="Leave blank for default food photo">
+            </div>
+            <div class="col-12">
+                <button type="submit" class="btn btn-success px-4 fw-bold">🚀 Publish Food Alert</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- VOLUNTEER BANNER -->
+    <div id="volunteerPanel" class="alert alert-primary rounded-4 shadow-sm d-none">
+        <h4 class="fw-bold mb-1">🛵 Volunteer Delivery Dispatch Center</h4>
+        <p class="mb-0">Accept available pickups below, navigate using Google Maps, mark orders delivered, and download your Volunteer Appreciation Certificate!</p>
+    </div>
+
+    <!-- ADMIN USERS TABLE -->
+    <div id="adminPanel" class="card border-0 shadow-sm rounded-4 p-4 mb-4 d-none">
+        <h4 class="fw-bold text-dark mb-3">🛡️ Admin Control: Registered Users, Volunteers & NGOs</h4>
+        <div class="table-responsive">
+            <table class="table table-hover align-middle">
+                <thead class="table-dark">
+                    <tr><th>ID</th><th>Name</th><th>Role</th><th>Email</th><th>Phone</th></tr>
+                </thead>
+                <tbody id="adminUsersTable"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- LIVE DONATIONS MANAGEMENT FEED -->
+    <h4 class="fw-bold mb-3">📦 Active Food Donations & Delivery Status</h4>
+    <div class="row g-4" id="dashboardFoodGrid"></div>
+</div>
+
+<!-- Print Certificate Modal -->
+<div class="modal fade" id="certModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content rounded-4">
+            <div class="modal-header bg-success text-white">
+                <h5 class="modal-title">🏆 Official Food Donation Impact Certificate</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body p-4" id="certificateContent"></div>
+            <div class="modal-footer">
+                <button onclick="window.print()" class="btn btn-success fw-bold">🖨️ Print / Save as PDF</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

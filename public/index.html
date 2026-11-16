@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodShare Events | Zero Food Waste & Community Redistribution</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-success sticky-top shadow-sm">
+    <div class="container">
+        <a class="navbar-brand fw-bold fs-4" href="#">🍲 FoodShare Events</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navMenu">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link text-white fw-semibold" href="#how-it-works">⚙️ How It Works</a></li>
+                <li class="nav-item"><a class="nav-link text-white fw-semibold" href="#live-donations">🥘 Live Food</a></li>
+                <li class="nav-item"><a class="nav-link text-white fw-semibold" href="#partners">🤝 Our Heroes & NGOs</a></li>
+                <li class="nav-item"><a class="nav-link text-white fw-semibold" href="#certificates">🏆 Certificates</a></li>
+            </ul>
+            <div class="d-flex gap-2">
+                <button class="btn btn-light text-success fw-semibold" data-bs-toggle="modal" data-bs-target="#loginModal">🔑 Login</button>
+                <button class="btn btn-warning fw-semibold" data-bs-toggle="modal" data-bs-target="#registerModal">✨ Join Us</button>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<header class="hero-section text-white py-5">
+    <div class="container">
+        <div class="row align-items-center g-4">
+            <div class="col-lg-6">
+                <span class="badge bg-warning text-dark mb-3 px-3 py-2 rounded-pill fw-bold">🌱 Smart Sustainable Community Initiative</span>
+                <h1 class="display-5 fw-bold mb-3">Rescue Surplus Food From Events & Feed Hungry Lives 🍛❤️</h1>
+                <p class="lead mb-4 opacity-90">Every year, tons of fresh food are wasted at weddings, parties, hotels, and corporate gatherings. <strong>FoodShare Events</strong> bridges the gap between generous donors, rapid volunteer riders, and verified NGOs in real time.</p>
+                
+                <!-- 1-Click Faculty Demo Logins -->
+                <div class="bg-white text-dark p-3 rounded-4 shadow-lg">
+                    <small class="fw-bold text-uppercase text-success d-block mb-2">⚡ Instant Role Login (Click to Explore Dashboards):</small>
+                    <div class="d-flex flex-wrap gap-2">
+                        <button onclick="quickLogin('donor@demo.com')" class="btn btn-outline-success btn-sm fw-bold">🏨 Food Donor</button>
+                        <button onclick="quickLogin('volunteer@demo.com')" class="btn btn-outline-primary btn-sm fw-bold">🛵 Volunteer Rider</button>
+                        <button onclick="quickLogin('ngo@demo.com')" class="btn btn-outline-warning text-dark btn-sm fw-bold">🤝 NGO Partner</button>
+                        <button onclick="quickLogin('admin@demo.com')" class="btn btn-outline-dark btn-sm fw-bold">🛡️ Admin</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Visual Cards: Surplus Food + Volunteer Delivery Rider -->
+            <div class="col-lg-6">
+                <div class="row g-3">
+                    <div class="col-6">
+                        <div class="card border-0 shadow-lg rounded-4 overflow-hidden hover-lift">
+                            <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600" class="card-img-top object-fit-cover" height="230" alt="Surplus Event Food">
+                            <div class="card-body bg-white text-dark text-center py-2">
+                                <span class="fw-bold">🍱 Fresh Event Surplus</span>
+                                <small class="d-block text-muted">Weddings, Hotels & Parties</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 mt-4">
+                        <div class="card border-0 shadow-lg rounded-4 overflow-hidden hover-lift">
+                            <img src="https://images.unsplash.com/photo-1617347454431-f49d7ff5c3b1?w=600" class="card-img-top object-fit-cover" height="230" alt="Volunteer Delivery Rider">
+                            <div class="card-body bg-white text-dark text-center py-2">
+                                <span class="fw-bold">🛵 Volunteer Express</span>
+                                <small class="d-block text-muted">Fast Pickup & NGO Delivery</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Live Impact Counter Bar (Dynamically Calculated from Database) -->
+<section class="py-4 bg-white border-bottom shadow-sm">
+    <div class="container">
+        <div class="text-center mb-3">
+            <span class="badge bg-success-subtle text-success px-3 py-1 rounded-pill fw-bold">📊 LIVE COMMUNITY IMPACT TRACKER</span>
+        </div>
+        <div class="row text-center g-3">
+            <div class="col-6 col-md-3">
+                <div class="p-3 bg-light rounded-4 border h-100">
+                    <div class="fs-2 mb-1">🍽️</div>
+                    <h2 class="fw-bold text-success mb-0" id="statMeals">365+</h2>
+                    <small class="text-muted fw-semibold">Needy People Fed</small>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="p-3 bg-light rounded-4 border h-100">
+                    <div class="fs-2 mb-1">🛵</div>
+                    <h2 class="fw-bold text-primary mb-0" id="statVolunteers">3</h2>
+                    <small class="text-muted fw-semibold">Active Delivery Volunteers</small>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="p-3 bg-light rounded-4 border h-100">
+                    <div class="fs-2 mb-1">🤝</div>
+                    <h2 class="fw-bold text-warning text-dark mb-0" id="statNgos">3</h2>
+                    <small class="text-muted fw-semibold">Partner NGOs & Shelters</small>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="p-3 bg-light rounded-4 border h-100">
+                    <div class="fs-2 mb-1">🏨</div>
+                    <h2 class="fw-bold text-danger mb-0" id="statDonors">4</h2>
+                    <small class="text-muted fw-semibold">Donating Hotels & Organizers</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Detailed Project Overview: Problem, Mission & How It Works -->
+<section id="how-it-works" class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <span class="badge bg-success mb-2 px-3 py-2">ABOUT THE PROJECT</span>
+            <h2 class="fw-bold">Why FoodShare Events? & How It Works</h2>
+            <p class="text-muted mx-auto" style="max-width: 720px;">Traditional food donations rely on unorganized phone calls, leading to delays and food spoilage. Our centralized web platform automates food rescue with live expiry tracking and GPS navigation.</p>
+        </div>
+
+        <!-- 4-Step Workflow -->
+        <div class="row g-4 mb-5">
+            <div class="col-md-3">
+                <div class="card border-0 shadow-sm rounded-4 p-4 text-center h-100 hover-lift">
+                    <div class="display-5 mb-3">🏨</div>
+                    <span class="badge bg-success-subtle text-success mb-2">STEP 1</span>
+                    <h5 class="fw-bold">Donor Lists Surplus</h5>
+                    <p class="text-muted small mb-0">Event hosts, banquet halls, or restaurants post food details, meal count, pickup address, and safe consumption hours.</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card border-0 shadow-sm rounded-4 p-4 text-center h-100 hover-lift">
+                    <div class="display-5 mb-3">🤝</div>
+                    <span class="badge bg-warning-subtle text-dark mb-2">STEP 2</span>
+                    <h5 class="fw-bold">NGO Claims Meals</h5>
+                    <p class="text-muted small mb-0">Nearby verified NGOs and shelters view live alerts and claim the meals needed for their community beneficiaries.</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card border-0 shadow-sm rounded-4 p-4 text-center h-100 hover-lift">
+                    <div class="display-5 mb-3">🛵</div>
+                    <span class="badge bg-primary-subtle text-primary mb-2">STEP 3</span>
+                    <h5 class="fw-bold">Volunteer Pickup</h5>
+                    <p class="text-muted small mb-0">Volunteer riders accept the delivery task, open one-click Google Maps navigation, and collect the food safely.</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card border-0 shadow-sm rounded-4 p-4 text-center h-100 hover-lift">
+                    <div class="display-5 mb-3">🏆</div>
+                    <span class="badge bg-danger-subtle text-danger mb-2">STEP 4</span>
+                    <h5 class="fw-bold">Delivery & Certificate</h5>
+                    <p class="text-muted small mb-0">Food reaches needy people before expiry, and Donors & Volunteers earn verified Social Impact Certificates.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Key Features Grid -->
+        <div class="row g-3">
+            <div class="col-md-4">
+                <div class="d-flex align-items-start bg-white p-3 rounded-4 shadow-sm">
+                    <span class="fs-3 me-3">⏳</span>
+                    <div>
+                        <h6 class="fw-bold mb-1">Live Food Freshness Timer</h6>
+                        <p class="text-muted small mb-0">Real-time countdown ensures perishable event food is picked up and distributed while 100% safe to eat.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="d-flex align-items-start bg-white p-3 rounded-4 shadow-sm">
+                    <span class="fs-3 me-3">📍</span>
+                    <div>
+                        <h6 class="fw-bold mb-1">Google Maps Route Integration</h6>
+                        <p class="text-muted small mb-0">Instant turn-by-turn directions help volunteer delivery riders locate venues and NGOs without delay.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="d-flex align-items-start bg-white p-3 rounded-4 shadow-sm">
+                    <span class="fs-3 me-3">🌍</span>
+                    <div>
+                        <h6 class="fw-bold mb-1">CO₂ & Sustainability Metrics</h6>
+                        <p class="text-muted small mb-0">Tracks every meal rescued and calculates greenhouse gas emissions saved from landfills.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Live Surplus Food Feed -->
+<section id="live-donations" class="py-5 bg-white">
+    <div class="container">
+        <div class="d-flex flex-wrap justify-content-between align-items-center mb-4">
+            <div>
+                <h3 class="fw-bold mb-1">🥘 Live Surplus Food Listings</h3>
+                <p class="text-muted small mb-0">Real-time feed of active donations, assigned riders, and completed deliveries</p>
+            </div>
+            <span class="badge bg-success fs-6 px-3 py-2">🟢 Live Database Sync</span>
+        </div>
+        <div class="row g-4" id="publicFoodGrid">
+            <!-- Populated dynamically by app.js -->
+        </div>
+    </div>
+</section>
+
+<!-- Community Heroes: Active Organizations, NGOs & Volunteers Directory -->
+<section id="partners" class="py-5 bg-light border-top">
+    <div class="container">
+        <div class="text-center mb-5">
+            <span class="badge bg-primary mb-2 px-3 py-2">OUR COMMUNITY NETWORK</span>
+            <h2 class="fw-bold">Organizations, NGOs & Volunteers Making It Happen</h2>
+            <p class="text-muted">Live directory of registered food donors, delivery heroes, and NGO partners helping needy communities</p>
+        </div>
+
+        <div class="row g-4">
+            <!-- Donating Organizations -->
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm rounded-4 h-100">
+                    <div class="card-header bg-success text-white fw-bold py-3 rounded-top-4">
+                        🏨 Food Donating Organizations (<span id="donorListCount">0</span>)
+                    </div>
+                    <ul class="list-group list-group-flush" id="donorDirectoryList"></ul>
+                </div>
+            </div>
+
+            <!-- Volunteer Riders -->
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm rounded-4 h-100">
+                    <div class="card-header bg-primary text-white fw-bold py-3 rounded-top-4">
+                        🛵 Volunteer Delivery Riders (<span id="volListCount">0</span>)
+                    </div>
+                    <ul class="list-group list-group-flush" id="volunteerDirectoryList"></ul>
+                </div>
+            </div>
+
+            <!-- Partner NGOs -->
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm rounded-4 h-100">
+                    <div class="card-header bg-warning text-dark fw-bold py-3 rounded-top-4">
+                        🤝 Partner NGOs Serving Needy (<span id="ngoListCount">0</span>)
+                    </div>
+                    <ul class="list-group list-group-flush" id="ngoDirectoryList"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Appreciation Certificate Showcase Section -->
+<section id="certificates" class="py-5 bg-white border-top">
+    <div class="container">
+        <div class="row align-items-center g-4">
+            <div class="col-lg-5">
+                <span class="badge bg-warning text-dark mb-2 px-3 py-2 fw-bold">🏆 RECOGNITION & REWARDS</span>
+                <h2 class="fw-bold mb-3">Verified Social Impact Certificates</h2>
+                <p class="text-muted">To encourage restaurants, event organizers, and student volunteers to participate regularly, <strong>FoodShare Events</strong> automatically generates printable <strong>Certificates of Appreciation</strong> for every completed delivery.</p>
+                <ul class="list-unstyled text-muted small mb-4">
+                    <li class="mb-2">✅ <strong>For Donors:</strong> Official proof of CSR & zero-waste event contribution.</li>
+                    <li class="mb-2">✅ <strong>For Volunteers:</strong> Verified community service credit for every pickup completed.</li>
+                    <li class="mb-2">✅ <strong>One-Click PDF Export:</strong> Available directly inside Donor, Volunteer & Admin dashboards.</li>
+                </ul>
+                <button onclick="openSampleCertificate()" class="btn btn-success fw-bold px-4 py-2">📄 Preview Sample Certificate</button>
+            </div>
+            <div class="col-lg-7">
+                <div class="border border-4 border-success p-4 rounded-4 shadow bg-light text-center">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="badge bg-success">VERIFIED IMPACT</span>
+                        <span class="text-muted small">Certificate ID: #FS-2026-884</span>
+                    </div>
+                    <h3 class="text-success fw-bold mb-0">🍲 FoodShare Events</h3>
+                    <p class="text-muted text-uppercase small letter-spacing-1 mb-3">Certificate of Social Impact & Zero Food Waste</p>
+                    <p class="mb-1 small">Proudly awarded to</p>
+                    <h4 class="fw-bold text-dark my-1">Spice Garden Hotel & Rahul Sharma</h4>
+                    <p class="small text-muted px-3">For rescuing surplus food and delivering <strong>85 nutritious meals</strong> to <strong>Helping Hands NGO</strong>, preventing <strong>212 kg of CO₂</strong> emissions.</p>
+                    <div class="d-flex justify-content-between mt-3 pt-2 border-top small text-muted">
+                        <span>Issued: November 2026</span>
+                        <span>Signed: FoodShare Admin 🛡️</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-dark text-white py-4">
+    <div class="container text-center">
+        <h5 class="fw-bold mb-1">🍲 FoodShare Events</h5>
+        <p class="small text-white-50 mb-2">Smart Surplus Food Redistribution Platform • Connecting Events, Volunteers & NGOs</p>
+        <small class="text-white-50">© 2026 FoodShare Community Project. Built for Zero Hunger & Zero Food Waste.</small>
+    </div>
+</footer>
+
+<!-- Sample Certificate Modal -->
+<div class="modal fade" id="sampleCertModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content rounded-4">
+            <div class="modal-header bg-success text-white">
+                <h5 class="modal-title">🏆 Official Appreciation Certificate</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body p-4" id="sampleCertBody"></div>
+            <div class="modal-footer">
+                <button onclick="window.print()" class="btn btn-success fw-bold">🖨️ Print / Save as PDF</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Login Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content rounded-4">
+            <div class="modal-header bg-success text-white">
+                <h5 class="modal-title">🔑 Login to FoodShare</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="loginForm">
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input type="email" id="loginEmail" class="form-control" required placeholder="donor@demo.com">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Password</label>
+                        <input type="password" id="loginPassword" class="form-control" required placeholder="1234">
+                    </div>
+                    <button type="submit" class="btn btn-success w-100 fw-bold">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Register Modal -->
+<div class="modal fade" id="registerModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content rounded-4">
+            <div class="modal-header bg-warning">
+                <h5 class="modal-title fw-bold">✨ Create New Account</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="registerForm">
+                    <div class="mb-2">
+                        <label class="form-label">Full Name / Organization</label>
+                        <input type="text" id="regName" class="form-control" required>
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label">Select Role</label>
+                        <select id="regRole" class="form-select">
+                            <option value="donor">🏨 Food Donor (Event / Restaurant)</option>
+                            <option value="volunteer">🛵 Volunteer (Pickup & Delivery)</option>
+                            <option value="ngo">🤝 NGO / Shelter</option>
+                        </select>
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label">Phone Number</label>
+                        <input type="text" id="regPhone" class="form-control" required>
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label">Email</label>
+                        <input type="email" id="regEmail" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Password</label>
+                        <input type="password" id="regPassword" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-success w-100 fw-bold">Register & Enter</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
